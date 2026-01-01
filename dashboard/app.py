@@ -7,7 +7,7 @@ st.set_page_config(page_title="Langroid Enterprise Dashboard", layout="wide")
 
 st.title("🚀 Langroid Enterprise AI Dashboard")
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Overview", "Agent Management", "Workflow Visualization", "Logs & Analytics"])
+page = st.sidebar.radio("Go to", ["Overview", "Super Agent (Autonomous)", "Agent Management", "Workflow Visualization", "Logs & Analytics"])
 
 if page == "Overview":
     st.header("System Overview")
@@ -24,6 +24,21 @@ if page == "Overview":
         "Status": ["Success", "Success", "Warning", "Success"]
     }
     st.table(pd.DataFrame(data))
+
+elif page == "Super Agent (Autonomous)":
+    st.header("🧠 Super Agent: Autonomous Execution")
+    task_input = st.text_input("Enter a complex task for the Super Agent:")
+    if st.button("Run Autonomously"):
+        with st.spinner("Agent is thinking, planning, and executing..."):
+            # Simulated response for UI demo
+            st.subheader("Execution Plan")
+            st.write("1. Analyze market trends\n2. Identify key competitors\n3. Generate SWOT analysis")
+            
+            st.subheader("Thought Process")
+            st.info("Thinking: I need to use the web search tool to get the latest data on AI trends.")
+            
+            st.subheader("Final Result")
+            st.success("Task completed successfully. Here is the report...")
 
 elif page == "Agent Management":
     st.header("Manage Your AI Agents")

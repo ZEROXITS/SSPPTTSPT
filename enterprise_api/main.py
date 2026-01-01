@@ -5,6 +5,7 @@ from typing import List, Optional, Dict, Any
 import langroid as lr
 import langroid.language_models as lm
 from langroid.agent.chat_agent import ChatAgent, ChatAgentConfig
+from langroid.agent.super_agent import SuperAgent, SuperAgentConfig
 from langroid.agent.task import Task
 import uvicorn
 
@@ -57,6 +58,21 @@ async def chat_with_agent(request: ChatRequest):
             response=response.content,
             usage=response.usage if hasattr(response, 'usage') else None
         )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/super-agent/run")
+async def run_super_agent(task: str):
+    try:
+        config = SuperAgentConfig()
+        agent = SuperAgent(config)
+        result = agent.run_full_task(task)
+        return {
+            "task": task,
+            "result": result,
+            "plan": agent.plan,
+            "history": agent.execution_history
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
