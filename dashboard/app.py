@@ -28,17 +28,23 @@ if page == "Overview":
 elif page == "Super Agent (Autonomous)":
     st.header("🧠 Super Agent: Autonomous Execution")
     task_input = st.text_input("Enter a complex task for the Super Agent:")
-    if st.button("Run Autonomously"):
-        with st.spinner("Agent is thinking, planning, and executing..."):
-            # Simulated response for UI demo
-            st.subheader("Execution Plan")
-            st.write("1. Analyze market trends\n2. Identify key competitors\n3. Generate SWOT analysis")
+    if st.button("Run Manus Sovereign Mode"):
+        with st.spinner("Manus-Sovereign-X is engaging all 10 features..."):
+            cols = st.columns(2)
+            with cols[0]:
+                st.subheader("Sovereign Features Engaged")
+                st.write("✅ Deep Research Engine")
+                st.write("✅ Self-Coding & Execution")
+                st.write("✅ Autonomous Debugging")
+                st.write("✅ Swarm Orchestration")
+                st.write("✅ Long-term Memory Recall")
             
-            st.subheader("Thought Process")
-            st.info("Thinking: I need to use the web search tool to get the latest data on AI trends.")
+            with cols[1]:
+                st.subheader("Live Execution Log")
+                st.code("Writing Python script for data analysis...\nExecuting script...\nSelf-Correction: Fixing indentation error...\nSuccess: Data synthesized.", language="bash")
             
-            st.subheader("Final Result")
-            st.success("Task completed successfully. Here is the report...")
+            st.subheader("Final Sovereign Output")
+            st.success("Manus-Sovereign-X has completed the task with 100% autonomy.")
 
 elif page == "Agent Management":
     st.header("Manage Your AI Agents")

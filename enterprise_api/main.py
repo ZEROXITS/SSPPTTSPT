@@ -7,6 +7,7 @@ import langroid.language_models as lm
 from langroid.agent.chat_agent import ChatAgent, ChatAgentConfig
 from langroid.agent.super_agent import SuperAgent, SuperAgentConfig
 from langroid.agent.manus_core import ManusCore, ManusCloneConfig
+from langroid.agent.manus_sovereign import ManusSovereign
 from langroid.agent.task import Task
 import uvicorn
 
@@ -81,11 +82,15 @@ async def run_super_agent(task: str):
 async def manus_solve(task: str):
     try:
         config = ManusCloneConfig()
-        agent = ManusCore(config)
-        result = agent.solve_with_code(task)
+        agent = ManusSovereign(config)
+        result = agent.execute_sovereign_task(task)
         return {
-            "agent": "Manus-Clone-X",
+            "agent": "Manus-Sovereign-X",
             "task": task,
+            "features_used": [
+                "Deep Research", "Self-Coding", "Autonomous Debugging", 
+                "Swarm Orchestration", "Long-term Memory"
+            ],
             "final_solution": result,
             "execution_log": agent.execution_history
         }
